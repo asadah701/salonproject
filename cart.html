@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>home salon</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <script src="bootstrap/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    #firstdiv {
+      display: flex;
+      border-bottom: 1px solid rgba(53, 52, 52, 0.2);
+      box-shadow: 0px 2px rgba(150, 149, 149, 0.2);
+      height: 50px;
+    }
+
+    #secdiv {
+      /* margin-left: 10px; */
+      margin-top: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+    #backarrow {
+
+      margin-top: 5px;
+    }
+
+    #thirddiv {
+      /* margin-left: 10px; */
+      display: flex;
+      margin-top: 5px;
+      height: 90px;
+      /* width: 530px; */
+      border: 1px solid rgba(24, 24, 23, 0.2);
+      box-shadow: 2px 2px rgba(156, 156, 156, 0.2);
+      border-bottom: none;
+
+    }
+
+    #fourthdiv {
+      /* margin-left: 10px; */
+      display: flex;
+      /* margin-top: 15px; */
+      height: 90px;
+      border: 1px solid rgba(24, 24, 23, 0.2);
+      /* width: 530px; */
+      box-shadow: 2px 2px rgba(156, 156, 156, 0.2);
+
+    }
+
+    #image1 {
+      margin-top: 12px;
+      margin-left: 12px;
+      height: 60px;
+      width: 60px;
+    }
+
+    #section1 {
+      margin-left: 15px;
+    }
+
+    /* #coupen {
+            margin-top: 10px;
+            border: 1px solid rgba(24, 24, 23, 0.2);
+            /* margin-left: 10px; */
+    /* width: 530px; */
+    height: 40px;
+    box-shadow: 2px 2px rgba(156, 156, 156, 0.2);
+    }
+
+    */ #coupenbtn1 {
+      height: 38px;
+      /* width: 80px; */
+      /* margin-left: 448px; */
+      border: none;
+      background-color: rgb(245, 37, 37);
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    #coupenbtn2 {
+      height: 38px;
+      /* width: 80px; */
+      /* margin-left: 448px; */
+      border: none;
+      background-color: rgb(245, 37, 37);
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    #coupenbtn3 {
+      height: 38px;
+      /* width: 80px; */
+      /* margin-left: 448px; */
+      border: none;
+      background-color: rgb(245, 37, 37);
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    #billdetails {
+      background-color: rgba(252, 250, 231, 0.952);
+      margin-top: 10px;
+      border: 1px solid rgb(24, 24, 23, );
+      /* margin-left: 10px; */
+      /* width: 530px; */
+      height: 100px;
+      box-shadow: 2px 2px rgba(156, 156, 156, 0.2);
+    }
+
+    /* popup form */
+    .open-button {
+      background-color: #555;
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      opacity: 0.8;
+      position: fixed;
+      bottom: 30px;
+      right: 10px;
+      width: 280px;
+    }
+
+    /* The popup form - hidden by default */
+    .form-popup {
+      display: none;
+      position: fixed;
+      bottom: 250px;
+      right: 60px;
+      border: 3px solid #f1f1f1;
+      z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container {
+      max-width: 300px;
+      padding: 10px;
+      background-color: white;
+    }
+
+    /* Full-width input fields */
+    .form-container input[type=text],
+    .form-container input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    /* When the inputs get focus, do something */
+    .form-container input[type=text]:focus,
+    .form-container input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+
+    /* Set a style for the submit/login button */
+    .form-container .btn {
+      background-color: rgb(245, 37, 37);
+      color: white;
+      padding: 16px 20px;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      margin-bottom: 10px;
+      opacity: ;
+    }
+
+    /* Add a red background color to the cancel button */
+    .form-container .cancel {
+      background-color: red;
+    }
+
+    /* Add some hover effects to buttons */
+    .form-container .btn:hover,
+    .open-button:hover {
+      opacity: 0.9;
+    }
+
+    .form-popup2 {
+      display: none;
+      position: fixed;
+      bottom: 100px;
+      right: 100px;
+      border: 3px solid #f1f1f1;
+      z-index: 9;
+    }
+
+    /* Add styles to the form container */
+    .form-container2 {
+      max-width: 300px;
+      padding: 10px;
+      background-color: white;
+    }
+
+    /* Full-width input fields */
+    .form-container2 input[type=text],
+    .form-container input[type=password] {
+      width: 100%;
+      padding: 15px;
+      margin: 5px 0 22px 0;
+      border: none;
+      background: #f1f1f1;
+    }
+
+    /* When the inputs get focus, do something */
+    .form-container2 input[type=text]:focus,
+    .form-container input[type=password]:focus {
+      background-color: #ddd;
+      outline: none;
+    }
+    #cartpopup{
+      height: 55px;
+      box-shadow: 0px 0px 0px 1px rgba(105, 104, 104, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container" id="firstdiv">
+    <div id="backarrow"><svg style="margin-top: 5px; " width="20px" height="20px" viewBox="0 0 16 16"
+        class="bi bi-arrow-left" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z" />
+      </svg></div>
+    <div class="container" id="secdiv"> Cart</div>
+  </div>
+  <div class="container" id="thirddiv">
+    <div><img id="image1" src="img/2.jpg.jpg" alt=""></div>
+    <div id="section1">Standard Service <br>mobil 5w <br> Rs. 2700</div>
+  </div>
+  <div class="container " id="fourthdiv" style="">
+    <div><img id="image1" src="img/3.jpg.jpg" alt=""></div>
+    <div id="section1">Standard Service <br>mobil 5w <br> Rs. 2700</div>
+  </div>
+  <div class="d-flex flex-row mt-2" style="box-shadow: 2px 2px 2px 2px rgba(197, 196, 196,0.3);height: 30px;">
+    <div>1</div>
+    <div><a class="btn btn-sm" href="http://"
+        style="position: fixed; right: 2px; background-color: rgb(245, 37, 37) ;border-radius: 4px;">Apply</a></div>
+  </div>
+  <div class="d-flex flex-row mt-2" style="box-shadow: 2px 2px 2px 2px rgba(197, 196, 196,0.3);height: 30px;">
+    <div>1</div>
+    <div><a class="btn btn-sm" href="http://"
+        style="position: fixed; right: 2px; background-color: rgb(245, 37, 37) ;border-radius: 4px;">Apply</a></div>
+  </div>
+  <div class="d-flex flex-row mt-2" style="box-shadow: 2px 2px 2px 2px rgba(197, 196, 196,0.3);height: 30px;">
+    <div>1</div>
+    <div><a class="btn btn-sm" href="http://"
+        style="position: fixed; right: 2px; background-color: rgb(245, 37, 37) ;border-radius: 4px;">Apply</a></div>
+  </div>
+
+  <div class="container mt-4" id="billdetails">
+    <div>Bill Details <br>Safety & Hygiene Fees <br> Item Total <br>You Pay</div>
+
+  </div>
+  <div class="container fixed-bottom" id="cartpopup"
+    style="">
+
+    <div class="float-right" style=";">
+      <button class="btn btn-lg ml-5 mt-2 p-2" onclick="openForm()"
+        style="  border: none; background-color: rgb(245, 37, 37) ; color: white; border-radius: 4px;">Checkout&nbsp;<i
+          style="font-size: 15px;;" class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button></div>
+  </div>
+  <div class="form-popup" id="myForm">
+    
+    <form action="" class="form-container">
+      <div style="background-color:">
+        <h4>Login/Sign up</h4>
+        <p>Enter Your Phone number to continue</p>
+      </div>
+
+      <!-- <label for="mobilenumber"><b>Mobile Number</b></label> -->
+      <input type="text" placeholder="Enter Your Mobile number" name="email" required>
+
+      <button type="button" class="btn" onclick="newform ()">Login</button>
+      <!-- <button type="button" class="btn cancel" onclick="closeForm()">Close</button> -->
+    </form>
+  </div>
+  <div class="form-popup2" id="myForm2">
+    <form action="" class="form-container2">
+      <h4>Login</h4>
+
+      <label for="mobilenumber"><b>Enter OTP</b></label>
+      <input type="text" placeholder="Enter OTP" name="otp" required>
+
+      <button type="submit" class="btn-submit">Submit</button>
+      <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+    </form>
+  </div>
+  <script>
+    function openForm() {
+      document.getElementById("myForm").style.display = "block";
+    }
+
+    function closeForm() {
+      document.getElementById("myForm").style.display = "none";
+    }
+    function newform() {
+      document.getElementById("myform2").style.display = "block"
+    }
+  </script>
+</body>
+
+</html>

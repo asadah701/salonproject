@@ -1,0 +1,1106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>home salon</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
+    integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <div class="wrapper">
+    <script src="bootstrap/jq.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx"
+      crossorigin="anonymous"></script>
+    <style>
+      #ourservices {
+        display: grid;
+      }
+
+      #ourservices {
+        display: grid;
+        grid-template-columns: repeat(3, 3fr);
+        grid-template-rows: repeat();
+        /* grid-column-gap: 2rem;
+            grid-row-gap: 1rem; */
+        grid-gap: 0px;
+      }
+
+      #locationbtn {
+        background-color: rgba(141, 139, 139, 0.2);
+        border: none;
+        border-radius: 50px;
+        /* width: 20px; */
+        /* margin-left: 240px; */
+      }
+
+      #locationbtn:active {
+        border: none;
+      }
+
+      #locationbtn:onclick {
+        border: none;
+      }
+
+      .autodetect {
+
+        width: 800px;
+        height: 40px;
+        border: 1px solid black;
+        background-color: white;
+        font-weight: 500;
+      }
+
+      .box1 {
+        /* background-color: white; */
+        /* border: 0.5px solid rgba(3, 3, 3, 0.1); */
+        /* border-radius: 4px; */
+        /* padding-bottom: 150px; */
+        height: 150px;
+      }
+
+      .item:first-child {
+        grid-row: 1 / span 2;
+        grid-column: 1 / span 2;
+      }
+
+      #more {
+        display: none;
+      }
+
+      #myBtn {
+        border-radius: 50px;
+        background: white;
+        border: 1px solid rgba(0, 0, 0, .3)
+      }
+
+      #faq1 {
+        text-decoration: none;
+        color: rgb(37, 37, 37);
+        font-weight: 500;
+      }
+
+      #faq2 {
+        text-decoration: none;
+        color: rgb(37, 37, 37);
+        font-weight: 500;
+      }
+
+      #faq3 {
+        text-decoration: none;
+        color: rgb(37, 37, 37);
+        font-weight: 500;
+      }
+
+      /* hamburger menu bar */
+      * {
+        box-sizing: border-box;
+      }
+
+      #main-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      #title {
+        color: #0a0a0a;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font-size: 2em;
+      }
+
+      #btn {
+        margin-top: 2px;
+        position: absolute;
+        z-index: 5;
+        top: 15px;
+        left: 15px;
+        cursor: pointer;
+        -webkit-transition: left 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
+        /* transition: left 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91); */
+      }
+
+      #top {
+        width: 20px;
+        height: 2px;
+        /* margin-bottom: 1px; */
+      }
+
+      #middle {
+        height: 2px;
+        margin-top: 5px;
+        width: 30px;
+      }
+
+      #bottom {
+        height: 2.5px;
+        width: 20px;
+        margin-top: 5px;
+      }
+
+      #btn div {
+        /* width: 25px; */
+        /* height: 2px; */
+        /* margin-bottom: 8px; */
+        background-color: #f83636;
+        -webkit-transition: -webkit-transform 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91), opacity 500ms, box-shadow 250ms, background-color 500ms;
+        transition: transform 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91), opacity 500ms, box-shadow 250ms, background-color 500ms;
+      }
+
+      #btn:hover>div {
+        box-shadow: 0 0 1px #ee3030;
+      }
+
+      #btn.active {
+        left: 230px;
+        position: fixed;
+      }
+
+      #btn.active div {
+        background-color: #ee3030;
+      }
+
+      #btn.active:hover>div {
+        box-shadow: 0 0 1px #181818;
+      }
+
+      #btn.active #top {
+        -webkit-transform: translateY(10px) rotate(-135deg);
+        -ms-transform: translateY(10px) rotate(-135deg);
+        transform: translateY(10px) rotate(-135deg);
+      }
+
+      #btn.active #middle {
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        transform: scale(0);
+      }
+
+      #btn.active #bottom {
+        -webkit-transform: translateY(-10px) rotate(-45deg);
+        -ms-transform: translateY(-10px) rotate(-45deg);
+        transform: translateY(-10px) rotate(-45deg);
+      }
+
+
+      #box {
+        position: fixed;
+        z-index: 4;
+        overflow: auto;
+        top: 0px;
+        left: -275px;
+        width: 275px;
+        opacity: 0;
+        padding: 0px 0px;
+        height: 100%;
+        background-color: #fdfafa;
+        color: rgb(15, 15, 15);
+        -webkit-transition: all 350ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
+        transition: all 350ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
+      }
+
+      #box.active {
+        left: 0px;
+        opacity: 1;
+      }
+
+      #items {
+        position: relative;
+        top: 40%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+
+      }
+
+      #items .item {
+        position: relative;
+        cursor: pointer;
+        font-size: 15px;
+        font-weight: 600;
+        padding: 3px 15px;
+        -webkit-transition: all 250ms;
+        transition: all 250ms;
+        border: none;
+      }
+
+      #items .item:hover {
+        padding: 5px 15px;
+        background-color: rgba(252, 206, 206, 0.2);
+      }
+
+      /* modal */
+      #modalc {
+        display: grid;
+        grid-template-columns: repeat(3, 3fr);
+        grid-template-rows: repeat();
+        /* grid-column-gap: 2rem;
+            grid-row-gap: 1rem; */
+        grid-gap: 0px;
+        position: absolute;
+        z-index: 999;
+        width: max-content;
+      }
+
+      #mainlogo {
+        width: 40px;
+        height: 40px;
+      }
+
+      #menulogo {
+        width: 65px;
+        height: 65px;
+      }
+
+      /* footer */
+      @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
+
+      body {
+        font-family: 'Muli', sans-serif;
+        height: 100% !important;
+        background-color: #fff !important;
+        padding-bottom: 0 !important;
+        margin-bottom: 0 !important;
+        overflow-x: hidden
+      }
+
+      .card {
+        color: #10082c !important;
+        background-color: #FFFFFF !important
+      }
+
+      h5 {
+        font-size: calc(20px + (28 - 20) * ((100vw - 360px) / (1600 - 360))) !important
+      }
+
+      .fa {
+        cursor: pointer;
+        font-size: 21px;
+        margin: 5px 10px 5px 10px !important
+      }
+
+      
+
+      #btn1:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        outline-width: 0
+      }
+
+      #lif {
+        margin-top: 8px;
+        margin-bottom: 8px
+      }
+
+      input::-webkit-input-placeholder {
+        padding-left: 5px !important;
+        transform: translate3d(0, -2px, 0)
+      }
+
+      input::placeholder {
+        vertical-align: middle !important;
+        color: rgb(196, 193, 193) !important;
+        font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important
+      }
+
+      input {
+        border-radius: 2px !important;
+        background: transparent !important;
+        color: #FFFFFF !important
+      }
+
+      input:focus {
+        -moz-box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        box-shadow: none !important;
+        outline-width: 0;
+        border-color: #FFFFFF !important
+      }
+
+      #imgf {
+        vertical-align: middle !important;
+        width: 100%;
+        width: calc(30px + 6 * ((100vw - 320px) / 680)) !important
+      }
+
+      #lif:first-child {
+        font-size: 18px !important;
+        font-weight: bold
+      }
+
+      footer {
+        background-color: #410902 !important;
+        color: #FFFFFF !important
+      }
+
+      small {
+        font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important
+      }
+
+      .pf {
+        font-size: calc(12px + (14 - 12) * ((100vw - 360px) / (1600 - 360))) !important;
+        color: rgb(196, 193, 193) !important
+      }
+
+      .social {
+        position: relative;
+        left: -10px
+      }
+
+      .Subscribe {
+        background-color: #FFFFFF !important;
+        color: #383431 !important;
+        font-weight: bold
+      }
+
+      #lif:not(:first-child) {
+        color: rgb(196, 193, 193) !important
+      }
+
+      /* rating and reviews */
+
+
+      #ar {
+        text-decoration: none !important;
+        color: inherit
+      }
+
+      #af:hover {
+        color: #455A64
+      }
+
+      #cardf {
+        border-radius: 5px;
+        background-color: #fff;
+        padding-left: 60px;
+        padding-right: 60px;
+        margin-top: 30px;
+        padding-top: 30px;
+        padding-bottom: 30px
+      }
+
+      .rating-box {
+        width: 130px;
+        height: 130px;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: #FBC02D;
+        color: #fff
+      }
+
+      .rating-label {
+        font-weight: bold
+      }
+
+      .rating-bar {
+        width: 300px;
+        padding: 8px;
+        border-radius: 5px
+      }
+
+      .bar-container {
+        width: 100%;
+        background-color: #f1f1f1;
+        text-align: center;
+        color: white;
+        border-radius: 20px;
+        cursor: pointer;
+        margin-bottom: 5px
+      }
+
+      .bar-5 {
+        width: 70%;
+        height: 13px;
+        background-color: #FBC02D;
+        border-radius: 20px
+      }
+
+      .bar-4 {
+        width: 30%;
+        height: 13px;
+        background-color: #FBC02D;
+        border-radius: 20px
+      }
+
+      .bar-3 {
+        width: 20%;
+        height: 13px;
+        background-color: #FBC02D;
+        border-radius: 20px
+      }
+
+      .bar-2 {
+        width: 10%;
+        height: 13px;
+        background-color: #FBC02D;
+        border-radius: 20px
+      }
+
+      .bar-1 {
+        width: 0%;
+        height: 13px;
+        background-color: #FBC02D;
+        border-radius: 20px
+      }
+
+      td {
+        padding-bottom: 10px
+      }
+
+      .star-active {
+        color: #FBC02D;
+        margin-top: 10px;
+        margin-bottom: 10px
+      }
+
+      .star-active:hover {
+        color: #F9A825;
+        cursor: pointer
+      }
+
+      .star-inactive {
+        color: #CFD8DC;
+        margin-top: 10px;
+        margin-bottom: 10px
+      }
+
+      .blue-text {
+        color: #0091EA
+      }
+
+      .content {
+        font-size: 18px
+      }
+
+      .profile-pic {
+        width: 90px;
+        height: 90px;
+        border-radius: 100%;
+        margin-right: 30px
+      }
+
+      .pic {
+        width: 80px;
+        height: 80px;
+        margin-right: 10px
+      }
+
+      .vote {
+        cursor: pointer
+      }
+    </style>
+    <script>
+      function myFunction() {
+        var dots = document.getElementById("dots");
+        var moreText = document.getElementById("more");
+        var btnText = document.getElementById("myBtn");
+
+        if (dots.style.display === "none") {
+          dots.style.display = "inline";
+          btnText.innerHTML = "Read more";
+          moreText.style.display = "none";
+        } else {
+          dots.style.display = "none";
+          btnText.innerHTML = "Read less";
+          moreText.style.display = "inline";
+        }
+      }
+    </script>
+
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(252, 252, 252);">
+    <div id="btn">
+      <div id='top'></div>
+      <div id='middle'></div>
+      <div id='bottom'></div>
+    </div>
+    <div id="box">
+      <div class="text-center mt-5"><img src="img/logo.png.png" alt="" class="image-fluid" id="menulogo"></div>
+      <div class="text-center" id="menubranding" style="font-weight: 500; font-size: 22px;">Welcome</div>
+      <div id="items">
+        <div class="item"><i class="fa fa-home" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 20px; margin-left: 20px; font-size: 25px;"></i>&nbsp;Home</div>
+        <div class="item"><i class="fa fa-calendar" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 20px; margin-left: 20px;  font-size: 25px;"></i>&nbsp;My Appointment</div>
+        <div class="item"><i class="fa fa-user" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 22px; margin-left: 20px;  font-size: 25px;"></i>&nbsp;&nbsp;Profile</div>
+        <div class="item"><i class="fa fa-money" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 16px; margin-left: 20px;  font-size: 25px;"></i>Home Salon Wallet</div>
+        <hr>
+        <div class="item"><i class="fa fa-user" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 20px; margin-left: 20px;  font-size: 25px;"></i>&nbsp;&nbsp;Refer A Friend</div>
+        <div class="item"><i class="fa fa-user" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 20px; margin-left: 20px;  font-size: 25px;"></i>&nbsp;Team of Picassos</div>
+        <div class="item"><i class="fa fa-university" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 14px; margin-left: 20px;  font-size: 25px;"></i>Franchisee</div>
+        <div class="item"><i class="fa fa-book" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 18px; margin-left: 20px;  font-size: 25px;"></i>&nbsp;Privacy Policy</div>
+        <div class="item"><i class="fa fa-question" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 25px; margin-left: 20px;  font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;FAQ's</div>
+        <div class="item"><i class="fa fa-mobile" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 25px; margin-left: 20px;  font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;&nbsp;Contact Us</div>
+        <div class="item"><i class="fa fa-cart-arrow-down" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 17px; margin-left: 18px;  font-size: 25px;"></i>&nbsp;&nbsp;Cart</div>
+        <div class="item"><i class="fa fa-map-marker" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 22px; margin-left: 20px;  font-size: 25px;"></i>&nbsp;&nbsp;&nbsp;Change Location</div>
+      </div>
+    </div>
+    <!-- script for menu -->
+    <script>
+      var sidebarBox = document.querySelector('#box');
+      var sidebarBtn = document.querySelector('#btn');
+      var pageWrapper = document.querySelector('#main-content');
+
+      sidebarBtn.addEventListener('click', function (event) {
+
+        if (this.classList.contains('active')) {
+          this.classList.remove('active');
+          sidebarBox.classList.remove('active');
+        } else {
+          this.classList.add('active');
+          sidebarBox.classList.add('active');
+        }
+      });
+
+      pageWrapper.addEventListener('click', function (event) {
+
+        if (sidebarBox.classList.contains('active')) {
+          sidebarBtn.classList.remove('active');
+          sidebarBox.classList.remove('active');
+        }
+      });
+
+      window.addEventListener('keydown', function (event) {
+
+        if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
+          sidebarBtn.classList.remove('active');
+          sidebarBox.classList.remove('active');
+        }
+      });
+    </script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-46156385-1', 'cssscript.com');
+      ga('send', 'pageview');
+
+    </script>
+
+
+    <!-- <div id="logo"><img id="mainlogo" class=" ml-5" src="img/logo.png.png" alt=""></div> -->
+    <div class="branding" style="font-weight: 600;"><span class="ml-5" style="color: rgb(230, 49, 17);">HOME</span><span>&nbsp;SALON</span></div>
+    <!-- divsion for location -->
+    <!-- Button trigger modal -->
+    <button class="float-right ml-5" id="locationbtn" data-toggle="modal" data-target="#exampleModal">
+      location<i style="" class="fa fa-angle-down" aria-hidden="true"></i>
+    </button>
+    <button style="border: none; background-color: rgba(141, 139, 139, 0.2) ; border-radius: 50px; width: 45px;"><i
+        class="fa fa-phone" aria-hidden="true"></i></button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" id="modelc">
+
+          <div class="modal-body" id="modelbody">
+            <div class="text-center" style="font-size: 20px ;font-weight: 600;">Choose Your City</div>
+            <div class="text-center" style="font-size: 14px; font-weight: 500;">This would help us in
+              providing you quick service</div>
+            <div class="row" style="margin-top: 25px;">
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:80px;height:80px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h6 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 15px;">Dehradun</h6>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:80px;height:80px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h6 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Delhi</h6>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:80px;height:80px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h6 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Chandigarh</h6>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:80px;height:80px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h6 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Mumbai</h6>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:80px;height:80px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h6 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Saharanpur</h6>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:80px;height:80px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h6 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Kolkata</h6>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:80px;height:80px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h6 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Chennai</h6>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:80px;height:80px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h6 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Guwahati</h6>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:80px;height:80px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h6 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Gaziabad</h6>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer" style="margin-top: 10px; height: 70px;">
+              <button class="autodetect"><i class="fa fa-map-pin" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; Detect my
+                location</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <svg  width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone ml-0" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+      </svg>
+
+
+
+
+  </nav>
+
+  </div>
+
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/2.jpg.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/2.jpg.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/3.jpg.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="container-fluid" style="margin-top: 20px;">
+    <div class="row">
+      <div class="col-1" style="border-bottom: 3px solid rgb(230, 49, 17);  margin-left: 10px;"></div>
+      <div class="col-11"></div>
+    </div>
+  </div>
+  <div class="container-fluid" style="margin-top: 10px;">
+
+    <h5>Our Services</h5>
+    <p style="font-weight: 500;">Services we provide to our customer</p>
+
+  </div>
+  <div class="container-fluid" id="ourservices">
+    <div class="box1"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg" alt="Bestseller" style="width:100px;height:100px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+      <h6 style="text-align: center;">Bestseller</h6>
+    </div>
+    <div class="box1"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg" alt="Make Your package"
+          style="width:100px;height:100px; border-radius: 50%; border: none;display: block;
+  margin-left: auto;
+  margin-right: auto;"></a>
+      <h6 style="text-align: center;">Make Your Package</h6>
+    </div>
+    <div class="box1"><a href="http://"><img class="img-thumbnail" src="img/wax.jpg.jpg" alt="" style="width:100px;height:100px; border-radius: 50%; border: none;display: block;
+  margin-left: auto;
+  margin-right: auto;"></a>
+      <h6 style="text-align: center;">Low Pain Waxing</h6>
+    </div>
+    <div class="box1"><a href="http://"><img class="img-thumbnail" src="img/honey.jpg.jpg" alt="" style="width:100px;height:100px; border-radius: 50%; border: none;display: block;
+  margin-left: auto;
+  margin-right: auto;"></a>
+      <h6 style="text-align: center;">Honey Waxing</h6>
+    </div>
+    <div class="box1"><a href="http://"><img class="img-thumbnail" src="img/mask.jpg.jpg" alt="" style="width:100px;height:100px; border-radius: 50%; border: none;display: block;
+  margin-left: auto;
+  margin-right: auto;"></a>
+      <h6 style="text-align: center;">Face Care</h6>
+    </div>
+    <div class="box1"><a href="http://"><img class="img-thumbnail" src="img/hair.jpg.jpg" alt="" style="width:100px;height:100px; border-radius: 50%; border: none;display: block;
+  margin-left: auto;
+  margin-right: auto;"></a>
+      <h6 style="text-align: center;">Hair Care</h6>
+    </div>
+    <div class="box1"><a href="http://"><img class="img-thumbnail" src="img/eye.jpg.jpg" alt="" style="width:100px;height:100px; border-radius: 50%; border: none;display: block;
+  margin-left: auto;
+  margin-right: auto;"></a>
+      <h6 style="text-align: center;">Low Contact Threading</h6>
+    </div>
+    <div class="box1"><a href="http://"><img class="img-thumbnail" src="img/hand.jpg.jpg" alt=""
+          style="width:100px;height:100px; border-radius: 50%; border: none;display: block;margin-left: auto; margin-right: auto;"></a>
+      <h6 style="text-align: center;">Pedicure</h6>
+    </div>
+    <div class="box1"><a href="http://"><img class="img-thumbnail" src="img/foot.jpg.jpg" alt="" style="width:100px;height:100px; border-radius: 50%; border: none;display: block;
+  margin-left: auto;
+  margin-right: auto;"></a>
+      <h6 style="text-align: center;">Manicure</h6>
+    </div>
+  </div>
+  <div class="container-fluid" style="margin-top: 20px;">
+    <div class="row">
+      <div class="col-1" style="border-bottom: 3px solid rgb(230, 49, 17);  margin-left: 10px;"></div>
+      <div class="col-11"></div>
+    </div>
+  </div>
+  <div class="container-fluid" style="margin-top: 10px;">
+    <img src="img/ad1.jpg.jpg" class="img-fluid" alt="Responsive image">
+  </div>
+  <div class="container-fluid" style="margin-top: 20px;">
+    <div class="row">
+      <div class="col-1" style="border-bottom: 3px solid rgb(230, 49, 17);  margin-left: 10px;"></div>
+      <div class="col-11"></div>
+    </div>
+  </div>
+  <div class="container-fluid" style="margin-top: 20px;">
+    <img src="img/ad1.jpg.jpg" class="img-fluid" alt="Responsive image">
+  </div>
+ 
+  <div class="container-fluid" style="margin-top: 10px;">
+    <div class="row">
+      <div class="col-1" style="border-bottom: 3px solid rgb(230, 49, 17);  margin-left: 10px;"></div>
+      <div class="col-11"></div>
+    </div>
+  </div>
+  <div class="container-fluid" style="margin-top: 10px;">
+
+    <h5>All About Home Salon</h5>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit nemo sequi doloremque aspernatur! Dolorem animi
+      cupiditate, nesciunt maiores optio velit? Vero ipsa rem obcaecati ab, dolor nisi alias placeat, saepe facere
+      dignissimos quisquam possimus facilis tenetur impedit. Neque quasi sed molestiae deleniti nobis sit est, soluta
+      nihil quod aut vel unde, tempore adipisci? Iusto unde aspernatur, animi, vel blanditiis itaque consectetur aperiam
+      inventore minima eaque, quia qui odit eveniet incidunt error sunt at labore beatae porro. Eos explicabo soluta
+      reprehenderit. <span id="dots">...</span><span id="more"> Doloremque, omnis, cumque delectus ab quis fugit nisi,
+        assumenda quae dicta consequuntur alias vero ex officiis accusantium exercitationem? Architecto libero optio,
+        minus adipisci reprehenderit laborum vero nesciunt beatae est obcaecati, necessitatibus doloribus ratione
+        accusantium rem quia explicabo. Est quos sapiente tenetur expedita ratione iste illo, quam aliquam libero ipsa
+        consectetur, quia magnam mollitia praesentium. Officiis accusantium ratione obcaecati recusandae quam vero rem
+        possimus, velit officia delectus blanditiis harum, cum laborum animi vel amet placeat consectetur? Nobis quod
+        aspernatur nam tenetur dolorum id, reprehenderit nemo, deleniti itaque consequuntur error culpa laborum dolores
+        iste. Neque aliquid recusandae assumenda iure enim harum odit nostrum a corporis voluptatum praesentium omnis
+        amet commodi reprehenderit laudantium nulla blanditiis sed nisi, animi maiores debitis obcaecati laboriosam.
+        Dolor consectetur quae temporibus amet natus optio obcaecati similique consequatur, saepe aliquam atque, aliquid
+        perspiciatis corrupti! Voluptates natus, libero deleniti soluta nam cumque adipisci voluptas fuga velit! Nihil
+        odit dignissimos labore amet, quisquam ab? Quos illo quis dicta quasi voluptates nesciunt reiciendis
+        voluptatibus, odit excepturi qui a quidem mollitia vel?</span></p>
+    <div class="text-center"><button class="btn btn-light" onclick="myFunction()" id="myBtn">see more</button></div>
+  </div>
+  <div class="container-fluid" style="margin-top: 10px;">
+    <div class="row">
+      <div class="col-1" style="border-bottom: 3px solid rgb(230, 49, 17);  margin-left: 10px;"></div>
+      <div class="col-11"></div>
+    </div>
+  </div>
+ 
+  <div class="container-fluid" style="margin-top: 10px;">
+
+    <h5>Our blog</h5>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam necessitatibus omnis cumque, obcaecati
+      quisquam rerum ducimus facere ratione eaque vel.</p>
+
+  </div>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="img/ad1.jpg.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/2.jpg.jpg" class="d-block w-100" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="img/3.jpg.jpg" class="d-block w-100" alt="...">
+      </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+  <div class="container-fluid" style="margin-top: 10px;">
+    <div class="row">
+      <div class="col-1" style="border-bottom: 3px solid rgb(230, 49, 17);  margin-left: 10px;"></div>
+      <div class="col-11"></div>
+    </div>
+  </div>
+  <div class="container-fluid" style="margin-top: 10px;">
+
+    <h5>FAQ</h5>
+
+  </div>
+  <div class="accordion" id="accordionExample">
+    <div class="card">
+      <div class="card-header" id="headingOne">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse"
+            data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" id="faq1">
+            Question 1
+          </button>
+        </h2>
+      </div>
+
+      <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+          officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+          moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+          butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+          haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingTwo">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+            data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" id="faq2">
+            Question 2
+          </button>
+        </h2>
+      </div>
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+          officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+          moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+          butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+          haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-header" id="headingThree">
+        <h2 class="mb-0">
+          <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse"
+            data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree" id="faq3">
+            Question 3
+          </button>
+        </h2>
+      </div>
+      <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+        <div class="card-body">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon
+          officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf
+          moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim
+          keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+          butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably
+          haven't heard of them accusamus labore sustainable VHS.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" style="margin-top: 10px;">
+    <div class="row">
+      <div class="col-1" style="border-bottom: 3px solid rgb(230, 49, 17);  margin-left: 10px;"></div>
+      <div class="col-11"></div>
+    </div>
+  </div>
+  <div class="container-fluid px-2 py-2 mx-auto">
+    <div class="row justify-content-center">
+      <div class="col-xl-7 col-lg-8 col-md-10 col-12 text-center mb-5">
+        <div id="cardf" class="card">
+          <div class="row justify-content-left d-flex">
+            <div class="col-md-4 d-flex flex-column">
+              <div class="rating-box">
+                <h1 class="pt-4">4.0</h1>
+                <p class="">out of 5</p>
+              </div>
+              <div> <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span>
+                <span class="fa fa-star star-active mx-1"></span> <span class="fa fa-star star-active mx-1"></span>
+                <span class="fa fa-star star-inactive mx-1"></span> </div>
+            </div>
+            <div class="col-md-8">
+              <div class="rating-bar0 justify-content-center">
+                <table class="text-left mx-auto">
+                  <tr>
+                    <td class="rating-label">Excellent</td>
+                    <td class="rating-bar">
+                      <div class="bar-container">
+                        <div class="bar-5"></div>
+                      </div>
+                    </td>
+                    <td class="text-right">123</td>
+                  </tr>
+                  <tr>
+                    <td class="rating-label">Good</td>
+                    <td class="rating-bar">
+                      <div class="bar-container">
+                        <div class="bar-4"></div>
+                      </div>
+                    </td>
+                    <td class="text-right">23</td>
+                  </tr>
+                  <tr>
+                    <td class="rating-label">Average</td>
+                    <td class="rating-bar">
+                      <div class="bar-container">
+                        <div class="bar-3"></div>
+                      </div>
+                    </td>
+                    <td class="text-right">10</td>
+                  </tr>
+                  <tr>
+                    <td class="rating-label">Poor</td>
+                    <td class="rating-bar">
+                      <div class="bar-container">
+                        <div class="bar-2"></div>
+                      </div>
+                    </td>
+                    <td class="text-right">3</td>
+                  </tr>
+                  <tr>
+                    <td class="rating-label">Terrible</td>
+                    <td class="rating-bar">
+                      <div class="bar-container">
+                        <div class="bar-1"></div>
+                      </div>
+                    </td>
+                    <td class="text-right">0</td>
+                  </tr>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div id="cardf" class="card">
+          <div class="row d-flex">
+            <div class=""> <img class="profile-pic" src="https://i.imgur.com/V3ICjlm.jpg"> </div>
+            <div class="d-flex flex-column">
+              <h3 class="mt-2 mb-0">Vikram jit Singh</h3>
+              <div>
+                <p class="text-left"><span class="text-muted">4.0</span> <span
+                    class="fa fa-star star-active ml-3"></span> <span class="fa fa-star star-active"></span> <span
+                    class="fa fa-star star-active"></span> <span class="fa fa-star star-active"></span> <span
+                    class="fa fa-star star-inactive"></span></p>
+              </div>
+            </div>
+            <div class="ml-auto">
+              <p class="text-muted pt-5 pt-sm-3">10 Sept</p>
+            </div>
+          </div>
+          <div class="row text-left">
+            <h4 class="blue-text mt-3">"An awesome activity to experience"</h4>
+            <p class="content">If you really enjoy spending your vacation 'on water' or would like to try something new
+              and exciting for the first time.</p>
+          </div>
+          <div class="row text-left"> <img class="pic" src="https://i.imgur.com/kjcZcfv.jpg"> <img class="pic"
+              src="https://i.imgur.com/SjBwAgs.jpg"> <img class="pic" src="https://i.imgur.com/IgHpsBh.jpg"> </div>
+          <div class="row text-left mt-4">
+            <div class="like mr-3 vote"> <img src="https://i.imgur.com/mHSQOaX.png"><span
+                class="blue-text pl-2">20</span> </div>
+            <div class="unlike vote"> <img src="https://i.imgur.com/bFBO3J7.png"><span class="text-muted pl-2">4</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Footer -->
+
+  <footer class="mt-2">
+    <div class="row justify-content-around mb-0 pt-2 mx-4">
+      <div class="col-xl-2 col-md-4 order-xl-1 order-4 mr-xl-0 my-auto">
+        <ul id="ulf" class="list-unstyled mt-md-3 mt-5">
+          <li id="lif">Social Media</li>
+          <li id="lif" class="social"> <span> <i class="fa fa-facebook" aria-hidden="true"></i></span> <span> <i
+                class="fa fa-instagram" aria-hidden="true"></i> </span> <span> <i class="fa fa-twitter"
+                aria-hidden="true"></i> </span> </li>
+        </ul>
+        <ul id="ulf" class="list-unstyled my-xl-4 my-md-3">
+          <li id="lif">Copyright</li>
+          <li id="lif">&#9400; Home Salon 2019</li>
+        </ul>
+      </div>
+      <div class="col-xl-2 col-md-3 pt-4 order-1">
+        <ul id="ulf" class="list-unstyled">
+          <li id="lif" class="mt-md-0 mt-4">Our Solution</li>
+          <li id="lif">Refer a Friend</li>
+          <li id="lif">Team of Picassos</li>
+          <li id="lif">About Us</li>
+          <li id="lif">Contact Us</li>
+          <li id="lif">Privacy Policy</li>
+
+        </ul>
+      </div>
+
+
+  </footer>
+  </div>
+
+</body>
+
+</html>

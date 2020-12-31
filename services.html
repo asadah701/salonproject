@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home Salon</title>
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <div class="wrapper">
+    <script src="bootstrap/jq.min.js"></script>
+    <script src="bootstrap/js/bootstrap.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      #locationbtn {
+        background-color: rgba(141, 139, 139, 0.2);
+        border: none;
+        border-radius: 50px;
+        /* width: 20px; */
+        margin-left: 240px;
+      }
+
+      .autodetect {
+
+        width: 800px;
+        height: 40px;
+        border: 1px solid black;
+        background-color: white;
+        font-weight: 500;
+      }
+
+      #servicediv {
+        color: black;
+      }
+
+      #main-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+
+      #title {
+        color: #0a0a0a;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font-size: 2em;
+      }
+
+      #btn {
+        margin-top: 2px;
+        position: absolute;
+        z-index: 5;
+        top: 15px;
+        left: 15px;
+        cursor: pointer;
+        -webkit-transition: left 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
+        /* transition: left 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91); */
+      }
+
+      #top {
+        width: 20px;
+        height: 2px;
+        /* margin-bottom: 1px; */
+      }
+
+      #middle {
+        height: 2px;
+        margin-top: 5px;
+        width: 30px;
+      }
+
+      #bottom {
+        height: 2.5px;
+        width: 20px;
+        margin-top: 5px;
+      }
+
+      #btn div {
+        /* width: 25px; */
+        /* height: 2px; */
+        /* margin-bottom: 8px; */
+        background-color: #f83636;
+        -webkit-transition: -webkit-transform 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91), opacity 500ms, box-shadow 250ms, background-color 500ms;
+        transition: transform 500ms cubic-bezier(0.6, 0.05, 0.28, 0.91), opacity 500ms, box-shadow 250ms, background-color 500ms;
+      }
+
+      #btn:hover>div {
+        box-shadow: 0 0 1px #ee3030;
+      }
+
+      #btn.active {
+        left: 230px;
+        position: fixed;
+      }
+
+      #btn.active div {
+        background-color: #ee3030;
+      }
+
+      #btn.active:hover>div {
+        box-shadow: 0 0 1px #181818;
+      }
+
+      #btn.active #top {
+        -webkit-transform: translateY(10px) rotate(-135deg);
+        -ms-transform: translateY(10px) rotate(-135deg);
+        transform: translateY(10px) rotate(-135deg);
+      }
+
+      #btn.active #middle {
+        -webkit-transform: scale(0);
+        -ms-transform: scale(0);
+        transform: scale(0);
+      }
+
+      #btn.active #bottom {
+        -webkit-transform: translateY(-10px) rotate(-45deg);
+        -ms-transform: translateY(-10px) rotate(-45deg);
+        transform: translateY(-10px) rotate(-45deg);
+      }
+
+
+      #box {
+        position: fixed;
+        z-index: 4;
+        overflow: auto;
+        top: 0px;
+        left: -275px;
+        width: 275px;
+        opacity: 0;
+        padding: 0px 0px;
+        height: 100%;
+        background-color: #fdfafa;
+        color: rgb(15, 15, 15);
+        -webkit-transition: all 350ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
+        transition: all 350ms cubic-bezier(0.6, 0.05, 0.28, 0.91);
+      }
+
+      #box.active {
+        left: 0px;
+        opacity: 1;
+      }
+
+      #items {
+        position: relative;
+        top: 45%;
+        -webkit-transform: translateY(-50%);
+        -ms-transform: translateY(-50%);
+        transform: translateY(-50%);
+
+      }
+
+      #items .item {
+        position: relative;
+        cursor: pointer;
+        font-size: 20px;
+        padding: 5px 10px;
+        -webkit-transition: all 250ms;
+        transition: all 250ms;
+        border: none;
+      }
+
+      #items .item:hover {
+        padding: 5px 15px;
+        background-color: rgba(252, 206, 206, 0.2);
+      }
+
+      /* modal */
+      /* #modalc {
+        display: grid;
+        grid-template-columns: repeat(3, 3fr);
+        grid-template-rows: repeat();
+        /* grid-column-gap: 2rem;
+            grid-row-gap: 1rem; */
+      grid-gap: 0px;
+      position: absolute;
+      z-index: 999;
+      width: max-content;
+      }
+
+      */ #myBtn {
+        border-radius: 50px;
+        background: white;
+        border: 1px solid rgba(0, 0, 0, .3)
+      }
+
+      #itemdiv {
+        /* height: 250px; */
+        /* width: 522px; */
+        box-shadow: 2px 2px 2px 2px rgba(173, 172, 172, 0.1);
+      }
+
+      /* #cartpopup {
+        height: 60px;
+        width: 560px;
+        position: fixed;
+        bottom: 1px;
+        padding-bottom: 10px;
+      } */
+
+
+      #cartpopup {
+        background-color: white;
+        height: 55px;
+        box-shadow: 0px 0px 0px 1px rgba(105, 104, 104, 0.5);
+      }
+      #servicediv{
+        overflow: auto;
+      }
+      .primarybtn{
+        font-weight: 600;
+        padding: 5px 7px;
+        border-radius: 50px;
+        border: none;
+        background: none;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        color: black;
+        outline: none;
+        outline-style: none;
+      }
+      .primarybtn:hover{
+        /* border: none; */
+        text-decoration: none;
+        color: white;
+        border-bottom: orangered;
+        background-color: rgb(226, 50, 50);
+        border: none;
+        cursor: pointer;
+        outline: none;
+        outline-style: none;
+      }
+      .primarybtn:active{
+        /* border: none; */
+        text-decoration: none;
+        color: white;
+        background-color: rgb(226, 50, 50);
+        border-bottom: orangered;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        outline-style: none;
+      }
+      .primarybtn::after{
+         /* border: none; */
+         text-decoration: none;
+        color: white;
+         background-color: rgb(226, 50, 50);
+        border-bottom: orangered;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        outline-style: none;
+        
+
+      }
+
+    </style>
+</head>
+
+<body style="">
+  <nav class="navbar navbar-expand-lg navbar-light" style="background-color: rgb(252, 252, 252);">
+    <div id="btn">
+      <div id='top'></div>
+      <div id='middle'></div>
+      <div id='bottom'></div>
+    </div>
+    <div id="box">
+      <div id="items">
+        <div class="item"><i class="fa fa-home" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 20px; margin-left: 20px;"></i>Home</div>
+        <div class="item"><i class="fa fa-calendar" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 20px; margin-left: 20px;"></i>My Appointment</div>
+        <div class="item"><i class="fa fa-user" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 22px; margin-left: 20px;"></i>Profile</div>
+        <div class="item"><i class="fa fa-money" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 16px; margin-left: 20px;"></i>Home Salon Wallet</div>
+        <hr>
+        <div class="item"><i class="fa fa-user" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 20px; margin-left: 20px;"></i>Refer A Friend</div>
+        <div class="item"><i class="fa fa-user" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 20px; margin-left: 20px;"></i>Team of Picassos</div>
+        <div class="item"><i class="fa fa-university" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 14px; margin-left: 20px;"></i>Franchisee</div>
+        <div class="item"><i class="fa fa-book" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 18px; margin-left: 20px;"></i>Privacy Policy</div>
+        <div class="item"><i class="fa fa-question" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 25px; margin-left: 20px;"></i>FAQ's</div>
+        <div class="item"><i class="fa fa-mobile" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 25px; margin-left: 20px;"></i>Contact Us</div>
+        <div class="item"><i class="fa fa-cart-arrow-down" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 17px; margin-left: 20px;"></i>Cart</div>
+        <div class="item"><i class="fa fa-map-marker" aria-hidden="true"
+            style="color: rgb(65, 63, 63); margin-right: 22px; margin-left: 20px;"></i>Change Location</div>
+      </div>
+    </div>
+    <!-- script for menu -->
+    <script>
+      var sidebarBox = document.querySelector('#box');
+      var sidebarBtn = document.querySelector('#btn');
+      var pageWrapper = document.querySelector('#main-content');
+
+      sidebarBtn.addEventListener('click', function (event) {
+
+        if (this.classList.contains('active')) {
+          this.classList.remove('active');
+          sidebarBox.classList.remove('active');
+        } else {
+          this.classList.add('active');
+          sidebarBox.classList.add('active');
+        }
+      });
+
+      pageWrapper.addEventListener('click', function (event) {
+
+        if (sidebarBox.classList.contains('active')) {
+          sidebarBtn.classList.remove('active');
+          sidebarBox.classList.remove('active');
+        }
+      });
+
+      window.addEventListener('keydown', function (event) {
+
+        if (sidebarBox.classList.contains('active') && event.keyCode === 27) {
+          sidebarBtn.classList.remove('active');
+          sidebarBox.classList.remove('active');
+        }
+      });
+    </script>
+    <script>
+      (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date(); a = s.createElement(o),
+          m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+      ga('create', 'UA-46156385-1', 'cssscript.com');
+      ga('send', 'pageview');
+
+    </script>
+
+
+
+     <!-- <div id="logo"><img id="mainlogo" class=" ml-5" src="img/logo.png.png" alt=""></div> -->
+     <div class="branding" style="font-weight: 600;"><span class="ml-5" style="color: rgb(230, 49, 17);">HOME</span><span>&nbsp;SALON</span></div>
+    <!-- divsion for location -->
+    <!-- Button trigger modal -->
+    <button class="float-right ml-5" id="locationbtn" data-toggle="modal" data-target="#exampleModal">
+      location<i style="margin-left: 5px; margin-top: 5px;" class="fa fa-angle-down" aria-hidden="true"></i>
+    </button>
+    <button style="border: none; background-color: rgba(141, 139, 139, 0.2) ; border-radius: 50px; width: 45px;"><i
+        class="fa fa-phone" aria-hidden="true"></i></button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content" id="modelc">
+
+          <div class="modal-body" id="modelbody">
+            <div class="text-center" style="font-size: 20px ;font-weight: 600;">Choose Your City</div>
+            <div class="text-center" style="font-size: 14px; font-weight: 500; margin-top: 15px;">This would help us in
+              providing you quick
+              service</div>
+            <div class="row" style="margin-top: 25px;">
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:100px;height:100px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h5 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Dehradun</h5>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:100px;height:100px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h5 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Delhi</h5>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:100px;height:100px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h5 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Chandigarh</h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:100px;height:100px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h5 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Mumbai</h5>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:100px;height:100px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h5 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Saharanpur</h5>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:100px;height:100px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h5 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Kolkata</h5>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:100px;height:100px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h5 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Chennai</h5>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:100px;height:100px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h5 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Guwahati</h5>
+                </div>
+              </div>
+              <div class="col-4">
+                <div class="locationmenu"><a href="http://"><img class="img-thumbnail" src="img/plain.jpg.jpg"
+                      alt="Bestseller" style="width:100px;height:100px; border-radius: 50%; border: none; display: block;
+      margin-left: auto;
+      margin-right: auto;"></a>
+                  <h5 style="text-align: center; font-family: Verdana, Geneva, Tahoma, sans-serif;">Gaziabad</h5>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer" style="margin-top: 10px; height: 70px;">
+              <button class="autodetect"><i class="fa fa-map-pin" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; Detect my
+                location</button>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-telephone" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd"
+          d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
+      </svg>
+  </nav>
+<div class="container d-flex mt-1" id="servicediv">
+<a class="primarybtn" >packages</a>
+<a class="primarybtn" >packages</a>
+<a class="primarybtn" >packages</a>
+<a class="primarybtn" >packages</a>
+<a class="primarybtn" >packages</a>
+<a class="primarybtn" >packages</a>
+<a class="primarybtn" >packages</a>
+<a class="primarybtn" >packages</a>
+<a class="primarybtn" >packages</a>
+</div>
+<div class="container d-flex mt-1" id="servicediv">
+<a class="primarybtn" >packages</a>
+<a class="primarybtn" >packages</a>
+<a class="primarybtn" >packages</a>
+<a class="primarybtn" >packages</a>
+
+</div>
+  <div class="container ml-1 mt-2" id="itemdiv"
+    style="; background-color; white; opacity: 1; border-radius: 8px; border: 1px solid rgba(65, 64, 64, 0.2);">
+    <div class="" style="display: flex; padding 5px 5px;" ;>
+
+      <img src="img/2.jpg.jpg" alt=""
+        style="height:80px; width: 80px; border-radius: 15px; margin-top: 12px; margin-left: 10px;">
+      <div style="margin-top: 12px;">
+        <h6 style="margin-left: 1em; font-weight: 600;">Permanent Smoothing</h6>
+        <h6 style="margin-left: 1em; color: rgb(226, 50, 50); font-size: 14px; font-weight: 700;"><i
+            style="margin-left: 4px; margin-top: 2px;" class="fa fa-inr" aria-hidden="true"></i> 2799 <s
+            style="margin-left: 3px; color: rgba(15, 15, 15, 0.4);"><i style="margin-left: 4px;" class="fa fa-inr"
+              aria-hidden="true"></i>4500</s></h6>
+        <div style="font-size: 13px; font-weight: 500; margin-left: 14px; margin-top: 5px; color: rgb(70, 69, 69);"><i
+            style="font-size: 13px;color: rgb(70, 69, 69);" class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; 210 Min
+        </div>
+
+      </div>
+      <button class="mt-3 ml-5" id="addbtn"
+        style=" background-color: rgb(226, 50, 50); height: 2em; border: none; color: white; border-radius: 4px;"
+        id="addbutton" onclick="" item-price="2700">ADD+</button>
+
+    </div>
+    
+    <hr>
+    <div class="p-1" style="margin-left: 10px;">
+      <h5 style="font-size: 15px;">Package Desciption :</h5>
+      <h6 style="font-size: 14px;"><i style="color: rgb(58, 57, 57);" class="fa fa-chevron-right"
+          aria-hidden="true"></i>&nbsp; Lotus - Cleanup</h6>
+      <h6 style="font-size: 14px;"><i style="color:  rgb(58, 57, 57);" class="fa fa-chevron-right"
+          aria-hidden="true"></i>&nbsp;Choclate waxing - Full Arms, Full Length & Underarms</h6>
+      <h6 style="font-size: 14px;"><i style="color:  rgb(58, 57, 57);" class="fa fa-chevron-right"
+          aria-hidden="true"></i>&nbsp;Threading - Eyebrow, Upperlips & Forehead</h6>
+    </div>
+  </div>
+  <div class="container ml-1 mt-2" id="itemdiv"
+    style="; background-color; white; opacity: 1; border-radius: 8px; border: 1px solid rgba(65, 64, 64, 0.2);">
+    <div class="" style="display: flex; padding 5px 5px;" ;>
+
+      <img src="img/2.jpg.jpg" alt=""
+        style="height:80px; width: 80px; border-radius: 15px; margin-top: 12px; margin-left: 10px;">
+      <div style="margin-top: 12px;">
+        <h6 style="margin-left: 1em; font-weight: 600;">Permanent Smoothing</h6>
+        <h6 style="margin-left: 1em; color: rgb(226, 50, 50); font-size: 14px; font-weight: 700;"><i
+            style="margin-left: 4px; margin-top: 2px;" class="fa fa-inr" aria-hidden="true"></i> 2799 <s
+            style="margin-left: 3px; color: rgba(15, 15, 15, 0.4);"><i style="margin-left: 4px;" class="fa fa-inr"
+              aria-hidden="true"></i>4500</s></h6>
+        <div style="font-size: 13px; font-weight: 500; margin-left: 14px; margin-top: 5px; color: rgb(70, 69, 69);"><i
+            style="font-size: 13px;color: rgb(70, 69, 69);" class="fa fa-clock-o" aria-hidden="true"></i>&nbsp; 210 Min
+        </div>
+
+      </div>
+      <button class="mt-3 ml-5" id="addbtn"
+        style=" background-color: rgb(226, 50, 50); height: 2em; border: none; color: white; border-radius: 4px;"
+        id="addbutton" onclick="" item-price="2700">ADD+</button>
+
+    </div>
+    <hr>
+    <div class="p-1" style="margin-left: 10px;">
+      <h5 style="font-size: 15px;">Package Desciption :</h5>
+      <h6 style="font-size: 14px;"><i style="color: rgb(58, 57, 57);" class="fa fa-chevron-right"
+          aria-hidden="true"></i>&nbsp; Lotus - Cleanup</h6>
+      <h6 style="font-size: 14px;"><i style="color:  rgb(58, 57, 57);" class="fa fa-chevron-right"
+          aria-hidden="true"></i>&nbsp;Choclate waxing - Full Arms, Full Length & Underarms</h6>
+      <h6 style="font-size: 14px;"><i style="color:  rgb(58, 57, 57);" class="fa fa-chevron-right"
+          aria-hidden="true"></i>&nbsp;Threading - Eyebrow, Upperlips & Forehead</h6>
+    </div>
+  </div>
+
+  <div class="container fixed-bottom" id="cartpopup" style="">
+
+    <div class="float-right" style=";">
+      <button class="btn btn-lg ml-5 mt-2 p-2" onclick="openForm()"
+        style="  border: none; background-color: rgb(245, 37, 37) ; color: white; border-radius: 4px; ">View Cart&nbsp;<i
+          style="font-size: 15px;;" class="fa fa-arrow-right" aria-hidden="true"></i>
+      </button></div>
+  </div>
+
+
+</body>
+
+</html>
